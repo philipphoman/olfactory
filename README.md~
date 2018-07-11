@@ -1,0 +1,80 @@
+# PTSD reversal project
+
+Threat reversal learning in combat veterans with and without PTSD
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on
+your local machine for development and testing purposes. See deployment
+for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+In order to run the analyses locally on your machine, you will need a
+bunch of software packages installed:
+
+* R
+* Matlab
+* emacs
+* org-mode
+* ESS (emacs speaks statistics)
+* TeXlive and XeTeX
+* latex2rtf
+* pdfcrop
+* pdftk
+
+### Installing
+
+Once the prerequisites are met, running the analyses should be
+straightforward. There is Makefile included in the repository.
+
+## Running the analyses 
+
+### Analyses
+
+make analyses
+
+#### A note on reproducibility of the Hierarchical Bayes estimation
+
+The code will produce the expected results, but you won't be able to
+reset that reproducibility within a session. The reason for this is
+the behavior of the pseudo random number generator (PRNG). The
+expose_stan_functions() function only sets the seed the first time a
+user-defined function ending in _rng is called. You can't change its
+seed afterwards within the same R session because it is declared
+static. This behavior is documented in the Details section of
+?expose_stan_functions. 
+
+See: https://groups.google.com/forum/#!topic/stan-users/8ayvLs229Ow
+
+### Figures
+
+make figures
+
+### View figures
+
+make figview
+
+### Manuscript
+
+make manuscript
+
+### Manuscript as rich text (rtf, suitable for MS office)
+
+make msrtf
+
+## Deployment
+
+Additional notes about how to deploy this on a live system
+
+## Authors
+
+* **Philipp Homan** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+## License
+
+This project is licensed under the MIT License - see the
+[LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
